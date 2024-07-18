@@ -1,0 +1,32 @@
+Q1: 
+a/ What technical/business constraints should the data storage component of the program architecture meet to fulfill the requirement described by the customer in paragraph «Statistics»? 
+
+Technical constraints: 
+
+    - Large data storage to be able to store >200Gb of daily reports from peacewatchers 
+   
+    - Since the peacemakers still do not know what kind of statistics they want to address, we need to categorize the data for faster extraction. 
+        o   We do that by implementing a data warehouse designed specifically for the use of BI and Analytics 
+
+    - Since only less than 1% of the data contains alert, we need to implement an efficient search algorithm 
+        o   Search algorithms that can extract the alert containing report (faster) with certain name as parameters 
+
+    - Redundancy—distributed storage systems can store more than one copy of the same data, for high availability, backup, and disaster recovery purposes. 
+    	o	Maybe of having to implement a distributed storage system as the main database 
+        
+    - The system must have scalability, peacemaker officers may add more waves of peacewatcher in the future. 
+        o	Having multiple stream processors to handle each specific task will help with scalability and efficiency 
+     
+Business constraints: 
+
+    - 1 day to categorize everything 
+    - Cost—distributed storage makes it possible to use cheaper, commodity hardware to store large volumes of data at low cost (thanks to the horizontal scaling vs the vertical scaling that is expensive) 
+        
+b/ What kind of component(s) (listed in the lecture) will the architecture need? 
+    - Data storage: NoSQL, Availability and Partition Tolerance  
+        o   Fast access time will help with Availability 
+    - Examples of NoSQL databases: 
+        o   MongoDB (most popular) 
+        o   Redis 
+        o   RavenDB 
+    - Distributed storage system will make sure the data will be accessible even when some of the partitions fail. (No loss of data) 

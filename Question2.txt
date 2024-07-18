@@ -1,0 +1,32 @@
+Q2: 
+a/ What business constraint should the architecture meet to fulfill the requirement described in the paragraph «Alert»?
+
+	-	Must distribute the alert to the peacekeeper as fast as possible, preferably to the nearest possible peacekeeper based on the peacewatcher location report.  
+	
+	-	Find a scalable notification server with good economy of scales (stream consumer) to handle the distribution of bad peace score to the peacekeepers as fast as possible. (Google Firebase, Amazon SNS) 
+      
+    -	An efficient streaming processor component must be used to find the alert as fast as possible, since only less than 1% of the data in the storage are alerts. These kinds of processors will have excessive costs for the extra processing. 
+
+b/ Which component to choose? 
+	- 	Stream Broker: We need functionalities to handle the data. We think that kafka streaming or spark streaming are the references. 
+	-   Notification Service:  
+
+    		o Google Firebase, Amazon SNS: 
+
+    			1. Easy to customize to the clients’ need 
+
+    			2. No physical hardware to maintain 
+
+    			3. Adaptive and scalable as the amount of alert grows 
+
+    			4. Data is passed through to a third party, more prone to security breaches 
+
+    		o Self-hosted server: 
+
+    			1. Since the service is for the government, self-hosted will make sure the data is more secure and is not stored on a third party 
+
+    			2. Harder to maintain with required a physical space as well as a maintainer as a staff  
+    			
+     -	Stream processing: near real time (we need the pacemakers to get the alert fast), and process a small amount of data, which is the case with all the small reports being sent.
+    	
+    	Batch processing: Did not choose batch processing because it processes data periodically, therefore we do not get real time data which is relevant since we want the peacemakers to get alerted by the drones fast. 

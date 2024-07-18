@@ -1,0 +1,35 @@
+Q4: Peaceland has forgotten some technical information in the report sent by the drone. In the future, this information could help Peaceland make its peacewatchers much more efficient. Which information?
+    -   Surrounding peacewatchers id in the same area: 
+        o   Pros: 
+            .   To make sure that the alert that is being sent is going to be notified just once if the peacewatcher that is in the same area has already done it  
+            .   Save resources on the stream processor for a quicker process of flagging the report. 
+        o   Cons: 
+            .   All extra information means extra data that is being sent, processed, and stored. That leads to more resources needing to be used to store the data and process it.  
+            
+    -    Checking if the peacekeeper id is occupied (list of available peacekeepers in the area for the Stream Processor 1 to choose): 
+
+    	o	Pros: 
+
+    		.	To make sure that the alert has been sent to an available peacekeeper and not to an occupied one who is processing another alert.  
+
+    		.	The citizen who has a negative peacescore can be detected more quickly. 
+
+    	o	Cons: 
+
+    		.	All extra information means extra data that is being sent, processed, and stored. That leads to more resources needing to be used to store the data and process it. Slow down report processing time. 
+
+    		.	Affect the time the alert is being sent (latency) 
+    		
+    -	We can add to the drone information suspicious actions of the citizens:  
+
+    	o	Pros: 
+ 
+    		.	The words heard by the citizens are not enough. The citizens can be silent and have a peacescore negative. Therefore, we need to also see if they are having suspicious actions or not.  
+
+      o     Cons:  
+
+            .	All extra information means extra data that is being sent, processed, and stored. That leads to more resources needing to be used to store the data and process it. Slow down report processing time. 
+
+            .	Affect time the alert is being sent (latency) 
+
+ 

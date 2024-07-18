@@ -1,0 +1,16 @@
+Q3: What mistake(s) from Peaceland can explain the failed attempt? 
+     -    The POC was ‘thrown’ into production. The POC may not be extensively researched and maybe needs a modification before it can be put into production. The problem arises from the lack of experience and consideration from the data scientist team on the system architecture design aspect. A failed POC in production is an expensive failure, which may cost the PeaceLand government a lot of money. 
+     
+     -    The data scientists chose SQL as Data Storage which does not scale well with bigger data. They should have chosen a NoSQL database to implement. NoSQL databases can be scaled well with bigger data, and they can handle high speed and volume data.
+     
+     -    The data scientist team may have used vertical scaling instead of horizontal scaling. Vertical scaling is limited to the capacity of one machine, scaling beyond that capacity can involve downtime and has an upper hard limit. On the other hand, horizontal scaling adds more machines to the process, allowing the team to scale with less downtime. 
+     
+     -    They chose an inappropriate CAP theorem for each data storage component. The client’s need to save every peacewatcher data isn’t satisfied, but in this case, we do have to make sacrifice so that we don’t go over budget and keep core functionality. The best CAP choice for the data storage components in this case should be Availability and Partition Tolerance.   
+
+    		o Partition Tolerance so if the systems break it can still work thanks to backup stream processor 1 and the backup connection. Only do it for stream processor 1 and not 2 because of the budget and the 1st   processor is way more important. (Importance sending alert > importance of doing analysis).  
+
+    		o Availability to make sure that the peacekeepers always get the alerts and the reports, it does not guarantee that it is the latest data, but it is not necessary need it.  
+
+    		o Did not choose Consistency because the data on the reports will not be modified, therefore we do not need to constantly keep the data updated. Also, we do not need the data scientist to access the latest data always, so consistency is not a priority in this designed system 
+     
+     -    Lack of skill, efficiency and recruit incompetent data scientists  
